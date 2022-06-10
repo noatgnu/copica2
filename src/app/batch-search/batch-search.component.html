@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h3 class="modal-title">Protein Batch Search</h3>
+</div>
+<div class="modal-body">
+  <div class="row mb-4">
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropDownProteinList" ngbDropdownToggle>Built-in Protein Lists</button>
+        <div ngbDropdownMenu aria-labelledby="dropDownProteinList">
+          <button ngbDropdownItem *ngFor="let b of builtInList" (click)="updateTextArea(b)">
+            {{web.filters[b].name}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <textarea class="form-control mb-2" [(ngModel)]="data" rows="10"></textarea>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" (click)="handleSubmit()">Submit</button>
+  <button class="btn btn-danger" (click)="close()">Close</button>
+</div>

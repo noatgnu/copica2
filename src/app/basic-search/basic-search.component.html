@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top d-lex flex-wrap">
+  <div class="container-fluid">
+    <b style="padding-left: 4px" class="text-dark"><a class="navbar-brand" href="#">Copica 2.0</a></b>
+    <div class="d-flex">
+      <div class="p-2">
+        <input class="form-control" type="text" placeholder="Quick Navigation of Selected Data" width="300" [ngbTypeahead]="data.searchLimited" [(ngModel)]="filterModel">
+      </div>
+      <div class="p-2">
+        <button class="btn btn-primary" (click)="scrollTo()">Go to</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <div class="card bg-light border-secondary" style="height: 100%">
+        <div class="card-body">
+          <h3 class="text-dark">SEARCH UTILITY</h3>
+          <div class="row">
+            <div class="col">
+              <input class="form-control" type="text"
+                     placeholder="Gene of Interests" aria-label="quickNav"
+                     [(ngModel)]="searchModel"
+                     [ngbTypeahead]="data.search" style="max-width: 250px"
+                     [resultTemplate]="rt"
+                     [editable]="false"
+              >
+              <small class="text-danger" *ngIf="searchFlag && data.searchFound.length === 0">No data found</small>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-danger" (click)="searchSingle()">Search</button>
+          <button class="btn btn-secondary" style="margin-left: 2px" (click)="openBatch()">Batch Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-10">
+      <div class="bg-light rounded-3">
+        <div class="container-fluid py-4">
+          <p>
+            <span class="display-6"><b>COPICA</b></span> is a Javascript based interface for a file-based databases of copy number data from different sources of data that operate entirely in your web browser.
+            A rudimentary implementation of a protein copy number estimation based on histone proteins' mass spectrometry data is also included in the database.
+            The implementation could be found <a class="text-link" (click)="openRuler()">here</a>.
+          </p>
+          <p>
+            The source code for the project as well as the data displayed could be obtained from the following <a href="https://github.com/noatgnu/Copica">GitHub repository</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #rt let-r="result" let-t="term">
+  <ngb-highlight [result]="r" [term]="t" style="max-width: 200px"></ngb-highlight>
+</ng-template>

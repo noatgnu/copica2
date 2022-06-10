@@ -1,0 +1,6 @@
+<hr class="mb-2">
+<ngb-pagination *ngIf="collectionSize >= 1" [(page)]="data.page" [pageSize]="data.pageSize" [collectionSize]="collectionSize"></ngb-pagination>
+<div id="{{g}}" class="container-fluid mt-2" *ngFor="let g of _genes | slice: (data.page-1)*data.pageSize:data.page*data.pageSize">
+  <app-protein [name]="g"></app-protein>
+</div>
+<ngb-pagination *ngIf="collectionSize >= 1" [(page)]="data.page" [pageSize]="data.pageSize" [collectionSize]="collectionSize"></ngb-pagination>

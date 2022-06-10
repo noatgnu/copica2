@@ -1,0 +1,5 @@
+<app-basic-search (search)="handleSearch($event)"></app-basic-search>
+
+<div *ngIf="finished">
+  <app-protein-viewer [genes]="genes"></app-protein-viewer>
+</div>
